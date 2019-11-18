@@ -22,6 +22,7 @@ public class TestFinanciera1 {
     
     @BeforeClass
     public static void setUpClass() {
+        //Setea el plan para usarlo en varias pruebas
     }
     
     @AfterClass
@@ -42,8 +43,12 @@ public class TestFinanciera1 {
     // @Test
     // public void hello() {}
     @Test
-    public void test1(){
-        
+    public void ObtenerMontoaEntregarParaPlanCuotaAdelantadaconClienteJubilado(){
+        //Secciones
+        //Configuración: Declaración de objetos y datos
+        //Ejecución: Llamada de los métodos
+        //Validación: Comparación entre resultado de ejecución y resultados esperados
+                //Método Assert
     }
     
 }
