@@ -46,9 +46,13 @@ public class TestFinanciera1 {
     public void ObtenerMontoaEntregarParaPlanCuotaAdelantadaconClienteJubilado(){
         //Secciones
         //Configuración: Declaración de objetos y datos
+        //Crea un cliente y un crédito
         //Ejecución: Llamada de los métodos
+        //Ejecuta el Crédito con Plan y Monto y obtengo el total a entregar
         //Validación: Comparación entre resultado de ejecución y resultados esperados
                 //Método Assert
+                //usar assert.equal y le paso el monto y un delta para el tema del redondeo por ej. 
+                //una dif de 0.1 donde se toma como válido
     }
     
 }
