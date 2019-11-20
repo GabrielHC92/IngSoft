@@ -45,11 +45,7 @@ public class TestFinanciera1 {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
     @Test
     public void calcularParametrosDelCreditoConPlanCuotaAdelantadaConTresCuotasCincoPorCientoInteresMontoDe10000() throws IServicioPublicoCreditoInformarCreditoOtorgadoErrorServicioFaultFaultMessage {
         //Configuracion
@@ -60,40 +56,89 @@ public class TestFinanciera1 {
         //Ejecucion
         //presentador.agregarDatosAlCredito(montoSolicitado, plan);
         float creditoMontoSolicitado=presentador.getCredito().getMontoSolicitado();
-        float 
+        float montoTotal = presentador.getCredito().calcularMontoTotal();
+		float cuotaConInteres = presentador.getCredito().calcularCuotaInt(); 
+		float importeAEntregar = presentador.getCredito().importeAEntregar();
         //Validacion
         assertEquals(10000.0,creditoMontoSolicitado,0.01); 
-        assertEquals(11500.0, presentador.getCredito().calcularMontoTotal(),0.01);
-        assertEquals(3833.3333, presentador.getCredito().calcularCuotaInt(),0.0001);
-        assertEquals(6166.667, presentador.getCredito().importeAEntregar(),0.001);
+        assertEquals(11500.0, montoTotal,0.01);
+        assertEquals(3833.3333, cuotaConInteres,0.0001);
+        assertEquals(6166.667,importeAEntregar ,0.001);
     }
-    
+    @Test
     public void calcularParametrosDelCreditoConPlanCuotaAdelantadaConDoceCuotasSeisPorCientoInteresMontoDe10000() throws IServicioPublicoCreditoInformarCreditoOtorgadoErrorServicioFaultFaultMessage {
         //Configuracion
         float montoSolicitado=10000;
         ISolicitarCreditoVista vista = new SolicitarCreditoVista();
         SolicitarCreditoPresentador presentador = new SolicitarCreditoPresentador(vista);
         Plan plan = new Plan("Cuota adelantada", (float) 0.06, 12);
-        
-        assertEquals(10000.0, presentador.getCredito().getMontoSolicitado(),0.01); 
-        assertEquals(17200.0, presentador.getCredito().calcularMontoTotal(),0.01);
+		//Ejecucion
+		float creditoMontoSolicitado=presentador.getCredito().getMontoSolicitado();
+        float montoTotal = presentador.getCredito().calcularMontoTotal();
+		float cuotaConInteres = presentador.getCredito().calcularCuotaInt(); 
+		float importeAEntregar = presentador.getCredito().importeAEntregar();
+        //Validacion
+        assertEquals(10000.0, creditoMontoSolicitado,0.01); 
+        assertEquals(17200.0, montoTotal,0.01);
         assertEquals(1433.3333, presentador.getCredito().calcularCuotaInt(),0.0001);
         assertEquals(8566.667, presentador.getCredito().importeAEntregar(),0.001);
     }
-    /*
-    @Test
-    public void ObtenerMontoaEntregarParaPlanCuotaAdelantadaconClienteJubilado(){
-        //Secciones
-        //Configuración: Declaración de objetos y datos
-        
-        
-        //Crea un cliente y un crédito
-        //Ejecución: Llamada de los métodos
-        //Ejecuta el Crédito con Plan y Monto y obtengo el total a entregar
-        //Validación: Comparación entre resultado de ejecución y resultados esperados
-                //Método Assert
-                //usar assert.equal y le paso el monto y un delta para el tema del redondeo por ej. 
-                //una dif de 0.1 donde se toma como válido
+
+	@Test
+    public void calcularParametrosDelCreditoConPlanCuotaAdelantadaConTresCuotasCincoPorCientoInteresMontoDe20000() throws IServicioPublicoCreditoInformarCreditoOtorgadoErrorServicioFaultFaultMessage {
+        //Configuracion
+        float montoSolicitado=20000;
+        ISolicitarCreditoVista vista = new SolicitarCreditoVista();
+        SolicitarCreditoPresentador presentador = new SolicitarCreditoPresentador(vista);
+        Plan plan = new Plan("Cuota adelantada", (float) 0.05, 3);
+		//Ejecucion
+		float creditoMontoSolicitado=presentador.getCredito().getMontoSolicitado();
+        float montoTotal = presentador.getCredito().calcularMontoTotal();
+		float cuotaConInteres = presentador.getCredito().calcularCuotaInt(); 
+		float importeAEntregar = presentador.getCredito().importeAEntregar();
+        //Validacion
+        assertEquals(20000, creditoMontoSolicitado,0.01); 
+        assertEquals(23000, montoTotal,0.01);
+        assertEquals(7666.6666, cuotaConInteres,0.0001);
+        assertEquals(12333.334, importeAEntregar,0.001);
     }
-    */
+
+	@Test
+    public void calcularParametrosDelCreditoConPlanCuotaAdelantadaConSeisCuotasSietePorCientoInteresMontoDe55000() throws IServicioPublicoCreditoInformarCreditoOtorgadoErrorServicioFaultFaultMessage {
+        //Configuracion
+        float montoSolicitado=55000;
+        ISolicitarCreditoVista vista = new SolicitarCreditoVista();
+        SolicitarCreditoPresentador presentador = new SolicitarCreditoPresentador(vista);
+        Plan plan = new Plan("Cuota adelantada", (float) 0.06, 3);
+        //Ejecucion
+		float creditoMontoSolicitado=presentador.getCredito().getMontoSolicitado();
+        float montoTotal = presentador.getCredito().calcularMontoTotal();
+		float cuotaConInteres = presentador.getCredito().calcularCuotaInt(); 
+		float importeAEntregar = presentador.getCredito().importeAEntregar();
+		//Validacion
+        assertEquals(55000, creditoMontoSolicitado,0.01); 
+        assertEquals(78100, montoTotal,0.01);
+        assertEquals(13016.6666, cuotaConInteres ,0.0001);
+        assertEquals(41983.333, importeAEntregar,0.001);
+    }
+
+	@Test
+    public void calcularParametrosDelCreditoConPlanCuotaAdelantadaConVeintiCuatroCuotasNuevePorCientoInteresMontoDe35578() throws IServicioPublicoCreditoInformarCreditoOtorgadoErrorServicioFaultFaultMessage {
+        //Configuracion
+        float montoSolicitado=35578;
+        ISolicitarCreditoVista vista = new SolicitarCreditoVista();
+        SolicitarCreditoPresentador presentador = new SolicitarCreditoPresentador(vista);
+        Plan plan = new Plan("Cuota adelantada", (float) 0.09, 24);
+		//Ejecucion
+		float creditoMontoSolicitado=presentador.getCredito().getMontoSolicitado();
+        float montoTotal = presentador.getCredito().calcularMontoTotal();
+		float cuotaConInteres = presentador.getCredito().calcularCuotaInt(); 
+		float importeAEntregar = presentador.getCredito().importeAEntregar();
+       	//Validacion
+        assertEquals(35578, creditoMontoSolicitado,0.01); 
+        assertEquals(112426.48, montoTotal,0.01);
+        assertEquals(4684.43666, cuotaConInteres,0.0001);
+        assertEquals(30893.5334, importeAEntregar,0.001);
+    }
+ 
 }
